@@ -1,0 +1,13 @@
+.landing {
+    background-color: var(--header-color);
+    padding: 20px 140px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--primary-color);
+    height: calc(100vh-96px);
+    overflow-y: auto;
+    justify-content: space-between;
+}
