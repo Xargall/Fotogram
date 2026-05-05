@@ -4,11 +4,20 @@
   scroll-behavior: smooth;
 }
 
+html {
+  font-size: 16px;
+}
+
+body {
+  height: 100vh;
+}
+
 :root {
   --primary-color: rgba(6, 23, 30, 1);
   --header-color: rgba(9, 33, 42, 1);
-  --arrow-dormant: rgba(253, 91, 79, 1);
+  --arrow-dormant: rgba(253, 91, 79, 0.2);
   --arrow-active: rgba(253, 91, 79, 1);
   --button-pressed: rgba(18, 70, 88, 1);
   --button-released: rgba(13, 50, 64, 1);
+  --hover-color: rgba(107, 193, 225, 1);
 }
