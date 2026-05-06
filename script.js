@@ -16,34 +16,29 @@ let randomImages = [
 function init() {
   const contentRef = document.getElementById("content");
   for (let index = 0; index < randomImages.length; index++) {
-    contentRef.innerHTML += createImage(index);
+    contentRef.innerHTML +=
+      '<img src=\"' + randomImages[index] + '\" onclick="openDialog()" >';
   }
   contentRef.classList.add("single_image");
-}
-
-function createImage(index) {
-  const createPic =
-    '<img src=\"' + randomImages[index] + '\" onclick="openDialog()">';
-  return createPic;
 }
 
 function openDialog() {
   const dialogRef = document.getElementById("dialog");
   dialogRef.showModal();
   dialogRef.classList.add("opened");
-  dialogRef.classList.toggle("d_none")
+  dialogRef.classList.toggle("d_none");
 }
 
 function closeDialog() {
   const dialogRef = document.getElementById("dialog");
   dialogRef.close();
   dialogRef.classList.remove("opened");
-  dialogRef.classList.toggle("d_none")
+  dialogRef.classList.toggle("d_none");
 }
 
 const articleContainer = document.getElementById("article_container");
 
-articleContainer.innerHTML = `<img src="${randomImages[0]}" class="image" />`;
+articleContainer.innerHTML = `<img src="${randomImages[0]}/>`;
 
 let imgIndex = 0;
 

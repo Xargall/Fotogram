@@ -105,6 +105,27 @@ dialog.opened::backdrop {
   object-fit: cover;
 }
 
+.dialog_head {
+  display: flex;
+  padding: 45px 0 45px;
+}
+
+input[type="button"]{
+  width: 24px;
+  height: 24px;
+  appearance: none;
+  margin: 0;
+  display: grid;
+  background: none;
+  background-image: url(./assets/icons/close.png);
+  background-position: center;
+  background-size: contain;
+  width: 15px;
+  height: 15px;
+  border: none;
+  
+}
+
 .icons {
   gap: 60px;
   display: flex;
@@ -128,3 +149,5 @@ dialog.opened::backdrop {
   background-color: var(--arrow-dormant);
   border: none;
 }
+
+

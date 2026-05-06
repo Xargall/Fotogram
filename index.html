@@ -26,9 +26,9 @@
       <h1>Your personal photo album</h1>
       <section class="main_frame" id="content"></section>
     </main>
-    <dialog id="dialog" class="dialog_style d_none">
-      <header><p></p>
-      <button onclick="closeDialog()"><img src="./assets/icons/close.png" alt=""></button></header>
+    <dialog id="dialog" class="dialog_style d_none" >
+      <header class="dialog_head" id="dial_head" >
+      <input type="button" onclick="closeDialog()"></input></header>
       <section>
         <article id="article_container"></article>
       </section>
@@ -36,7 +36,7 @@
         <button id="left_arrow" class="left" onclick="previousImg()">
           <img src="./assets/icons/Union.png" alt="" />
         </button>
-        <p></p>
+        <p id="count_pic" ></p>
         <button id="right_arrow" class="right" onclick="nextImg()">
           <img src="./assets/icons/Union.png" alt="" />
         </button>
