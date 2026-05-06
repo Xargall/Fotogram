@@ -13,20 +13,51 @@ let randomImages = [
   "./assets/img/swimming_duck.jpg",
 ];
 
+let randomNames = [
+  "beach_flashlight",
+  "blue_tit_bird.jpg",
+  "city_by_night.jpg",
+  "frosty_lake.jpg",
+  "hurrican_from_space.jpg",
+  "icy_lake.jpg",
+  "mountain_view.jpg",
+  "snowy_tree.jpg",
+  "snow_leopard.jpg",
+  "stormy_sky.png",
+  "strange_bird.jpg",
+  "swimming_duck.jpg",
+];
+
 function init() {
   const contentRef = document.getElementById("content");
   for (let index = 0; index < randomImages.length; index++) {
-    contentRef.innerHTML +=
-      '<img src=\"' + randomImages[index] + '\" onclick="openDialog()" >';
+    contentRef.innerHTML += `<img src="${randomImages[index]}" alt="" onclick="openDialog(${index})">`;
   }
   contentRef.classList.add("single_image");
 }
 
-function openDialog() {
+function openDialog(index) {
   const dialogRef = document.getElementById("dialog");
+  dialogRef.innerHTML = "";
   dialogRef.showModal();
   dialogRef.classList.add("opened");
   dialogRef.classList.toggle("d_none");
+  dialogRef.innerHTML += `
+      <header class="dialog_head" id="dial_head" >
+      <p>${randomNames[index]}</p>
+      <input type="button" onclick="closeDialog()"></input></header>
+      <section>
+        <article id="article_container"><img src="${randomImages[index]}" class="image"></article>
+      </section>
+      <footer class="icons">
+        <button id="left_arrow" class="left" onclick="previousImg(${index})">
+          <img src="./assets/icons/Union.png" alt="" />
+        </button>
+        <p class="count">${index + 1} / 12</p>
+        <button id="right_arrow" class="right" onclick="nextImg(${index})">
+          <img src="./assets/icons/Union.png" alt="" />
+        </button>
+      </footer>`;
 }
 
 function closeDialog() {
@@ -36,26 +67,19 @@ function closeDialog() {
   dialogRef.classList.toggle("d_none");
 }
 
-const articleContainer = document.getElementById("article_container");
-
-articleContainer.innerHTML = `<img src="${randomImages[0]}/>`;
-
-let imgIndex = 0;
-
-function previousImg() {
-  if (imgIndex > 0 && imgIndex < randomImages.length) {
-    imgIndex--;
-  } else {
-    imgIndex = randomImages.length - 1;
+function previousImg(index) {
+  const prevRef = document.getElementById("article_container");
+  if (index >= 0) {
+    index -= 1;
+    prevRef.innerHTML = `<img src="${randomImages[index-1]}" class="image" />`;
   }
-  articleContainer.innerHTML = `<img src="${randomImages[imgIndex]}" class="image" />`;
 }
 
-function nextImg() {
-  if (imgIndex >= 0 && imgIndex < randomImages.length - 1) {
-    imgIndex++;
-  } else {
-    imgIndex = 0;
+function nextImg(index) {
+  const nextRef = document.getElementById("article_container");
+  if (index <= randomImages.length - 1) {
+    index++;
+    nextRef.innerHTML = `<img src="${randomImages[index+1]}" class="image" />`;
+    return index;
   }
-  articleContainer.innerHTML = `<img src="${randomImages[imgIndex]}" class="image" />`;
 }
