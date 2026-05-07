@@ -1,6 +1,7 @@
 .landing {
   background-color: var(--header-color);
   padding: 20px 140px;
+  display: flex;
 }
 
 h1 {
@@ -8,15 +9,13 @@ h1 {
   font-family: "Figtree";
   font-weight: 800;
   color: white;
-  padding-top: 145px;
+  padding-top: 100px;
 }
 
 main {
   display: flex;
   flex-direction: column;
   background-color: var(--primary-color);
-  overflow-y: auto;
-  justify-content: space-between;
   align-items: center;
 }
 
@@ -51,6 +50,7 @@ main {
   background-size: cover;
   background-repeat: no-repeats;
   padding: 35px;
+  bottom: 0;
 }
 
 dialog {
@@ -158,6 +158,12 @@ input[type="button"] {
   transform: rotateY(180deg);
   background-color: var(--arrow-dormant);
   border: none;
+  transition: all 250ms ease-in-out;
+}
+
+.left:hover {
+  background-color: var(--arrow-active);
+  transition: all 250ms ease-in-out;
 }
 
 .right {
@@ -166,4 +172,70 @@ input[type="button"] {
   border-radius: 50%;
   background-color: var(--arrow-dormant);
   border: none;
+  transition: all 250ms ease-in-out;
+}
+
+.right:hover {
+  background-color: var(--arrow-active);
+  transition: all 250ms ease-in-out;
+}
+
+@media screen and (min-width: 1440px) {
+  .landing {
+    padding: 20px max(140px, calc(50% - 720px));
+  }
+
+  .main_content {
+    padding: 0 max(135px, calc(50% - 720px)) 20px;
+  }
+}
+
+@media screen and (min-width:1200px) and (max-width: 1439px) {
+  .main_content {
+    padding: 20px 135px;
+  }
+}
+
+@media screen and (min-width: 918px) and (max-width: 1199px) {
+  .main_frame {
+    padding: 60px 100px;
+  }
+
+  }
+
+@media screen and (min-width:480px) and (max-width:917px) {
+
+  .main_frame {
+    padding: 40px 80px;
+  }
+
+  h1{
+    font-size: 3rem;
+    text-align: center;
+  }
+  
+  
+}
+
+@media screen and (max-width:479px) {
+
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+    padding: 40px 20px 0;
+  }
+
+  .main_frame {
+    padding: 40px 60px;
+  }
+
+  .landing {
+    padding: 20px 100px;
+    justify-content: center;
+  }
+
+  .landing img {
+    width: 168px;
+  }
+  
 }

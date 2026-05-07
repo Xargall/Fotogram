@@ -1,4 +1,4 @@
-let randomImages = [
+const randomImages = [
   "./assets/img/beach_flashlight.jpg",
   "./assets/img/blue_tit_bird.jpg",
   "./assets/img/city_by_night.jpg",
@@ -13,7 +13,7 @@ let randomImages = [
   "./assets/img/swimming_duck.jpg",
 ];
 
-let randomNames = [
+const randomNames = [
   "beach_flashlight",
   "blue_tit_bird.jpg",
   "city_by_night.jpg",
@@ -42,22 +42,7 @@ function openDialog(index) {
   dialogRef.showModal();
   dialogRef.classList.add("opened");
   dialogRef.classList.toggle("d_none");
-  dialogRef.innerHTML += `
-      <header class="dialog_head" id="dial_head" >
-      <p>${randomNames[index]}</p>
-      <input type="button" onclick="closeDialog()"></input></header>
-      <section>
-        <article id="article_container"><img src="${randomImages[index]}" class="image"></article>
-      </section>
-      <footer class="icons">
-        <button id="left_arrow" class="left" onclick="previousImg(${index})">
-          <img src="./assets/icons/Union.png" alt="" />
-        </button>
-        <p class="count">${index + 1} / 12</p>
-        <button id="right_arrow" class="right" onclick="nextImg(${index})">
-          <img src="./assets/icons/Union.png" alt="" />
-        </button>
-      </footer>`;
+  dialogRef.innerHTML += getDialogHtml(index);
 }
 
 function closeDialog() {
@@ -68,18 +53,44 @@ function closeDialog() {
 }
 
 function previousImg(index) {
-  const prevRef = document.getElementById("article_container");
-  if (index >= 0) {
-    index -= 1;
-    prevRef.innerHTML = `<img src="${randomImages[index-1]}" class="image" />`;
+  const prevRef = document.getElementById("dialog");
+
+  if (index > 0 && index < randomImages.length) {
+    index--;
+  } else {
+    index = randomImages.length - 1;
   }
+  prevRef.innerHTML = getDialogHtml(index);
 }
 
 function nextImg(index) {
-  const nextRef = document.getElementById("article_container");
-  if (index <= randomImages.length - 1) {
+  const nextRef = document.getElementById("dialog");
+  nextRef.innerHTML = "";
+  if (index >= 0 && index < randomImages.length - 1) {
     index++;
-    nextRef.innerHTML = `<img src="${randomImages[index+1]}" class="image" />`;
-    return index;
+  } else {
+    index = 0;
   }
+  nextRef.innerHTML = getDialogHtml(index);
 }
+
+function getDialogHtml(index) {
+  return `
+      <header class="dialog_head" id="dial_head" >
+      <p>${randomNames[index]}</p>
+      <input type="button" onclick="closeDialog()"></input></header>
+      <section>
+        <article id="article_container"><img src="${randomImages[index]}" class="image"></article>
+      </section>
+      <footer class="icons">
+        <button id="left_arrow" class="left" onclick="previousImg(${index})">
+          <img src="./assets/icons/Union.png" alt="" />
+        </button>
+        <p class="count"> ${index + 1} / 12</p>
+        <button id="right_arrow" class="right" onclick="nextImg(${index})">
+          <img src="./assets/icons/Union.png" alt="" />
+        </button>
+      </footer>`;
+}
+
+
