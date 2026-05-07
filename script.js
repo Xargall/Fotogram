@@ -31,7 +31,7 @@ const randomNames = [
 function init() {
   const contentRef = document.getElementById("content");
   for (let index = 0; index < randomImages.length; index++) {
-    contentRef.innerHTML += `<img src="${randomImages[index]}" alt="" onclick="openDialog(${index})">`;
+    contentRef.innerHTML += `<img src="${randomImages[index]}" alt="" onclick="openDialog(${index})" tabindex="0">`;
   }
   contentRef.classList.add("single_image");
 }
@@ -41,7 +41,7 @@ function openDialog(index) {
   dialogRef.innerHTML = "";
   dialogRef.showModal();
   dialogRef.classList.add("opened");
-  dialogRef.classList.toggle("d_none");
+  // dialogRef.classList.toggle("d_none");
   dialogRef.innerHTML += getDialogHtml(index);
 }
 
@@ -49,7 +49,7 @@ function closeDialog() {
   const dialogRef = document.getElementById("dialog");
   dialogRef.close();
   dialogRef.classList.remove("opened");
-  dialogRef.classList.toggle("d_none");
+  // dialogRef.classList.toggle("d_none");
 }
 
 function previousImg(index) {
@@ -76,11 +76,12 @@ function nextImg(index) {
 
 function getDialogHtml(index) {
   return `
+  <section onclick="bubbleProtection(event)" class="dialog_section">
       <header class="dialog_head" id="dial_head" >
       <p>${randomNames[index]}</p>
       <input type="button" onclick="closeDialog()"></input></header>
       <section>
-        <article id="article_container"><img src="${randomImages[index]}" class="image"></article>
+        <article id="article_container" class="img_cont"><img src="${randomImages[index]}" class="image"></article>
       </section>
       <footer class="icons">
         <button id="left_arrow" class="left" onclick="previousImg(${index})">
@@ -90,7 +91,10 @@ function getDialogHtml(index) {
         <button id="right_arrow" class="right" onclick="nextImg(${index})">
           <img src="./assets/icons/Union.png" alt="" />
         </button>
-      </footer>`;
+      </footer>
+  </section>`;
 }
 
-
+function bubbleProtection(event) {
+  event.stopPropagation();
+}
