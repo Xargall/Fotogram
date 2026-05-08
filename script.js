@@ -1,20 +1,5 @@
 const randomImages = [
-  "./assets/img/beach_flashlight.jpg",
-  "./assets/img/blue_tit_bird.jpg",
-  "./assets/img/city_by_night.jpg",
-  "./assets/img/frosty_lake.jpg",
-  "./assets/img/hurrican_from_space.jpg",
-  "./assets/img/icy_lake.jpg",
-  "./assets/img/mountain_view.jpg",
-  "./assets/img/snowy_tree.jpg",
-  "./assets/img/snow_leopard.jpg",
-  "./assets/img/stormy_sky.png",
-  "./assets/img/strange_bird.jpg",
-  "./assets/img/swimming_duck.jpg",
-];
-
-const randomNames = [
-  "beach_flashlight",
+  "beach_flashlight.jpg",
   "blue_tit_bird.jpg",
   "city_by_night.jpg",
   "frosty_lake.jpg",
@@ -31,7 +16,7 @@ const randomNames = [
 function init() {
   const contentRef = document.getElementById("content");
   for (let index = 0; index < randomImages.length; index++) {
-    contentRef.innerHTML += `<img src="${randomImages[index]}" alt="" onclick="openDialog(${index})" tabindex="0">`;
+    contentRef.innerHTML += `<button onclick="openDialog(${index})" class="tab"><img src="./assets/img/${randomImages[index]}" alt=""  ></button>`;
   }
   contentRef.classList.add("single_image");
 }
@@ -41,7 +26,6 @@ function openDialog(index) {
   dialogRef.innerHTML = "";
   dialogRef.showModal();
   dialogRef.classList.add("opened");
-  // dialogRef.classList.toggle("d_none");
   dialogRef.innerHTML += getDialogHtml(index);
 }
 
@@ -49,7 +33,6 @@ function closeDialog() {
   const dialogRef = document.getElementById("dialog");
   dialogRef.close();
   dialogRef.classList.remove("opened");
-  // dialogRef.classList.toggle("d_none");
 }
 
 function previousImg(index) {
@@ -78,10 +61,10 @@ function getDialogHtml(index) {
   return `
   <section onclick="bubbleProtection(event)" class="dialog_section">
       <header class="dialog_head" id="dial_head" >
-      <p>${randomNames[index]}</p>
+      <p>${randomImages[index]}</p>
       <input type="button" onclick="closeDialog()"></input></header>
       <section>
-        <article id="article_container" class="img_cont"><img src="${randomImages[index]}" class="image"></article>
+        <article id="article_container" class="img_cont"><img src="./assets/img/${randomImages[index]}" alt="${randomImages[index]}" class="image"></article>
       </section>
       <footer class="icons">
         <button id="left_arrow" class="left" onclick="previousImg(${index})">

@@ -9,7 +9,7 @@ h1 {
   font-family: "Figtree";
   font-weight: 800;
   color: white;
-  padding-top: 100px;
+  padding-top: 50px;
 }
 
 main {
@@ -17,7 +17,7 @@ main {
   flex-direction: column;
   background-color: var(--primary-color);
   align-items: center;
-  padding: 20px 135px 200px;
+  padding: 20px 135px 20px;
 }
 
 .single_image img {
@@ -39,19 +39,33 @@ main {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 8px;
   padding: 80px 135px 0;
 }
 
-.footer {
+.tab{
+
+  background: none;
+  border: none;
+}
+
+footer {
+  width: 100%;
+  height: 140px;
+  margin-top: auto;
   display: flex;
   justify-content: center;
+  align-items: center;
   background-image: url(./assets/icons/Subtract.png);
   background-color: var(--primary-color);
   background-size: cover;
-  background-repeat: no-repeats;
-  padding: 35px;
-  bottom: 0;
+  background-repeat: no-repeat;
+}
+
+footer img {
+
+  width:225px;
+  height: 65px;
 }
 
 dialog {
@@ -194,7 +208,7 @@ input[type="button"]:hover{
   background-color: var(--arrow-dormant);
   border: none;
   transition: all 250ms ease-in-out;
-  cursor: po;
+  cursor: pointer;
 }
 
 .right:hover {
@@ -208,13 +222,13 @@ input[type="button"]:hover{
   }
 
   main {
-    padding: 0 max(135px, calc(50% - 720px)) 200px;
+    padding: 0 max(135px, calc(50% - 720px)) 20px;
   }
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1439px) {
   main {
-    padding: 20px 135px 200px;
+    padding: 20px 135px 20px;
   }
 }
 
