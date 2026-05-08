@@ -16,7 +16,7 @@ const randomImages = [
 function init() {
   const contentRef = document.getElementById("content");
   for (let index = 0; index < randomImages.length; index++) {
-    contentRef.innerHTML += `<button onclick="openDialog(${index})" class="tab"><img src="./assets/img/${randomImages[index]}" alt=""  ></button>`;
+    contentRef.innerHTML += `<button onclick="openDialog(${index})" class="tab" aria-label="open_Modal" aria-modal="true"><img src="./assets/img/${randomImages[index]}" alt="${randomImages[index]}" ></button>`;
   }
   contentRef.classList.add("single_image");
 }

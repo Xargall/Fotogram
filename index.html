@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="fonts.css" />
   </head>
 
-  <body onload="init()">
+  <body onload="init()" aria-labelledby="main_content">
     <header>
       <section class="landing">
         <img src="./assets/icons/Capa_1.png" alt="Fotogram Logo" />
@@ -26,10 +26,10 @@
       <h1>Your personal photo album</h1>
       <section class="main_frame" id="content"></section>
     </main>
-    <dialog id="dialog" class="dialog_style " onclick="closeDialog()" >
+    <dialog id="dialog" class="dialog_style " onclick="closeDialog()" aria-label="close_modal">
     </dialog>
     <!-- <div onclick="closeDetail()" id="preview" class="d_none"></div> -->
-    <footer>
+    <footer class="main_footer">
       <img src="./assets/icons/Frame 6.png" alt="DA_Logo" />
     </footer>
     <script src="script.js"></script>
