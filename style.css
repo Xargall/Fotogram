@@ -17,6 +17,7 @@ main {
   flex-direction: column;
   background-color: var(--primary-color);
   align-items: center;
+  padding: 20px 135px 200px;
 }
 
 .single_image img {
@@ -39,7 +40,7 @@ main {
   justify-content: center;
   flex-wrap: wrap;
   gap: 16px;
-  padding: 80px 135px;
+  padding: 80px 135px 0;
 }
 
 .footer {
@@ -79,13 +80,13 @@ dialog.opened {
 dialog::backdrop {
   opacity: 0;
   background-color: black;
-  transition: all 1s ease-in;
+  transition: all 250ms ease-in;
 }
 
 dialog.opened::backdrop {
   opacity: 0.5;
   background-color: black;
-  transition: all 1s ease-in;
+  transition: all 250ms ease-in;
 }
 
 .dialog_style {
@@ -105,14 +106,15 @@ dialog.opened::backdrop {
   display: none;
 } */
 
+
 .image {
-  width: 560px;
+  width: 100%;
   height: 375px;
   animation: slide 0.5s linear;
   object-fit: cover;
 }
 
-.img_cont{
+.img_cont {
   display: flex;
   justify-content: center;
 }
@@ -139,28 +141,34 @@ dialog.opened::backdrop {
 }
 
 input[type="button"] {
+  
   width: 24px;
   height: 24px;
   appearance: none;
   margin: 0;
   display: grid;
-  background: none;
-  background-image: url(./assets/icons/close.png);
+  background-image: url(./assets/icons/close.svg);
+  background-color: transparent;
+  background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
-  width: 15px;
-  height: 15px;
   border: none;
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+}
+
+input[type="button"]:hover{
+  background-color: var(--button-released);
+  scale: 1.1;
+  border-radius: 50%;
+  transition: all 250ms ease-in-out;
 }
 
 .icons {
- 
   width: 260px;
   height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
 }
 
 .left {
@@ -199,14 +207,14 @@ input[type="button"] {
     padding: 20px max(140px, calc(50% - 720px));
   }
 
-  .main_content {
-    padding: 0 max(135px, calc(50% - 720px)) 20px;
+  main {
+    padding: 0 max(135px, calc(50% - 720px)) 200px;
   }
 }
 
-@media screen and (min-width:1200px) and (max-width: 1439px) {
-  .main_content {
-    padding: 20px 135px;
+@media screen and (min-width: 1200px) and (max-width: 1439px) {
+  main {
+    padding: 20px 135px 200px;
   }
 }
 
@@ -214,24 +222,21 @@ input[type="button"] {
   .main_frame {
     padding: 60px 100px;
   }
+}
 
-  }
-
-@media screen and (min-width:480px) and (max-width:917px) {
-
+@media screen and (min-width: 480px) and (max-width: 917px) {
   .main_frame {
     padding: 40px 80px;
   }
 
-  h1{
+  h1 {
     font-size: 3rem;
     text-align: center;
   }
-  
-  
 }
 
-@media screen and (max-width:479px) {
+@media screen and (max-width: 479px) {
+
 
   h1 {
     font-size: 2rem;
@@ -251,5 +256,9 @@ input[type="button"] {
   .landing img {
     width: 168px;
   }
-  
+
+  .dialog_head{
+    font-size: 1rem;
+    padding: 30px 25px 0;
+  }
 }
